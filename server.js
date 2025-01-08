@@ -1,12 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const carRoutes = require('./car-dealership/backend/crud-operations/crud'); // Adjust path as needed
+const carRoutes = require('./crud-operations/crud'); // Adjust path as needed
 
 
 const app = express();
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'car-dealership/frontend/views'));
+app.set('views', path.join(__dirname, '/views'));
 
 
 //MongoDB connection
@@ -21,7 +21,7 @@ app.get('/test', (req, res) => {
 });
 
 app.get('/', (_req, res) => {
-    res.sendFile(path.join(__dirname, 'car-dealership/frontend/forms/homePage.html'));
+    res.sendFile(path.join(__dirname, '/forms/homePage.html'));
 });
 
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(carRoutes);
 
 // Serve static files from the 'frontend' directory
-app.use(express.static(path.join(__dirname, 'car-dealership/frontend')));
+app.use(express.static(path.join(__dirname, 'styles')));
 
 
 // Start the server with node server.js
