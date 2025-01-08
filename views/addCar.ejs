@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Car</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+    <header>
+        <a href="/">Back to Home</a>
+        <h1>Add a New Car to the Database</h1>
+    </header>
+    <% if (successMessage) { %>
+        <div class="success">
+            <p>
+                <%= successMessage %>
+            </p>
+        </div>
+        <% } %>
+
+            <% if (errorMessage) { %>
+                <div class="error">
+                    <p>
+                        <%= errorMessage %>
+                    </p>
+                </div>
+                <% } %>
+
+                    <form action="/add-car" method="POST">
+                        <label for="make">Make:</label>
+                        <input type="text" name="make" id="make" placeholder="make"><br>
+
+                        <label for="model">Model:</label>
+                        <input type="text" name="model" id="model" placeholder="model" required><br>
+
+                        <label for="price">Price:</label>
+                        <input type="number" name="price" id="price" placeholder="price in thousands" required min="0"
+                            step="0.1"><br>
+
+                        <label for="launch_year">Year:</label>
+                        <input type="number" name="launch_year" id="launch_year" placeholder="launch year" required><br>
+
+
+
+                        <button type="submit">Add Car</button>
+                    </form>
+</body>
+
+</html>

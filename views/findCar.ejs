@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Car</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+    <header>
+        <a href="/">Back to Home</a>
+        <h1>Find a Car</h1>
+    </header>
+
+    <% if (errorMessage) { %>
+        <div class="error">
+            <p>
+                <%= errorMessage %>
+            </p>
+        </div>
+        <% } %>
+
+
+            <form action="/find-car" method="POST">
+                <label for="make">Make:</label>
+                <input type="text" name="make" id="make" placeholder="make"><br>
+
+                <label for="model">Model: </label>
+                <input type="text" name="model" id="model" placeholder="model"><br>
+
+                <label for="launch_year">Year: </label>
+                <input type="text" name="launch_year" id="launch_year" placeholder="launch year"><br>
+
+                <button type="submit">Find Car</button>
+            </form>
+            <% if (cars.length> 0) { %>
+                <div>
+                    <h2>
+                        <%= carCount %> cars found.
+                    </h2>
+                </div>
+
+
+                <h2>Search Results:</h2>
+                <div class="table-container">
+                    <table border="1" cellpadding="10">
+                        <thead>
+                            <tr>
+                                <th>Make</th>
+                                <th>Model</th>
+                                <th>Price</th>
+                                <th>Year</th>
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% cars.forEach(car=> { %>
+                                <tr>
+                                    <td>
+                                        <%= car.make %>
+                                    </td>
+                                    <td>
+                                        <%= car.model %>
+                                    </td>
+                                    <td>$<%= car.price.toFixed(1) %>K
+                                    </td>
+                                    <td>
+                                        <%= car.launch_year %>
+                                    </td>
+                                    <td>
+                                        <a href="/edit-car/<%= car._id %>">EDIT</a>
+                                    </td>
+
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+</body>
+
+</html>

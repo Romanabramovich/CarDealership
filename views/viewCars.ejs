@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Database</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+    <header>
+        <a href="/">Back to Home</a>
+        <h1>Car Listings</h1>
+        <h4>Cars in database: <%= cars.length %>
+        </h4>
+    </header>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cars.forEach(car=> { %>
+                    <tr>
+                        <td>
+                            <%= car.make %>
+                        </td>
+                        <td>
+                            <%= car.model %>
+                        </td>
+                        <td>$<%= car.price.toFixed(1) %>K
+                        </td>
+                        <td>
+                            <%= car.launch_year %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
