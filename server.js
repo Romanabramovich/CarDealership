@@ -11,13 +11,11 @@ app.set('views', path.join(__dirname, '/views'));
 
 
 //MongoDB connection
-const mongoURI = process.env.MONGO_URI;
-mongoose.connect('mongoURI', {
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/CarDealership';
+mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000, // Optional: Adjust timeout
-}).then(() => console.log('Connected to MongoDB'))
-    .catch((err) => console.error('Database connection error:', err));
+});
 
 
 app.get('/test', (req, res) => {

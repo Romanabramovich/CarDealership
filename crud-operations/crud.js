@@ -7,9 +7,6 @@ const app = express();
 const Car = mongoose.model('Car', carSchema, 'carsMakeModelPriceYear');
 const router = express.Router();
 
-
-// Routes
-//IF DOESN'T WORK MOVE TO SERVER
 router.get('/add-car', (_req, res) => {
     try {
         res.render('addCar', { successMessage: null, errorMessage: null });
